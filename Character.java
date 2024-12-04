@@ -12,7 +12,7 @@ public class Character extends Actor{
     public void initialize(){
         stillAlive = true;
     }
-    //teste
+
     public boolean stillAlive() {
         return stillAlive;
     }
@@ -38,10 +38,10 @@ public class Character extends Actor{
     }
     
     public void act(){
-        if(Greenfoot.isKeyDown("left")){
+        if(Greenfoot.isKeyDown("right")){
             moveLeft();
         }
-        if(Greenfoot.isKeyDown("right")){
+        if(Greenfoot.isKeyDown("left")){
             moveRight();
         }
         getItem();

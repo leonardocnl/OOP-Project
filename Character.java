@@ -12,7 +12,7 @@ public class Character extends Actor{
     public void initialize(){
         stillAlive = true;
     }
-    
+    //teste
     public boolean stillAlive() {
         return stillAlive;
     }

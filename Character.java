@@ -38,10 +38,10 @@ public class Character extends Actor{
     }
     
     public void act(){
-        if(Greenfoot.isKeyDown("right")){
+        if(Greenfoot.isKeyDown("left")){
             moveLeft();
         }
-        if(Greenfoot.isKeyDown("left")){
+        if(Greenfoot.isKeyDown("right")){
             moveRight();
         }
         getItem();

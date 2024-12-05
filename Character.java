@@ -5,14 +5,14 @@ public class Character extends Actor{
     private boolean stillAlive;
 
     public Character(){
-        velocity = 12;
+        velocity = 8;
         initialize();
     }
 
     public void initialize(){
         stillAlive = true;
     }
-
+    
     public boolean stillAlive() {
         return stillAlive;
     }
@@ -25,7 +25,7 @@ public class Character extends Actor{
     }
     public void moveLeft(){
         if(stillAlive){
-            setLocation(getX()-velocity, getY());
+            setLocation(getX() - velocity, getY());
             setImage("Character left.png");
         }
     }

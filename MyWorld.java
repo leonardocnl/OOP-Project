@@ -19,7 +19,7 @@ public class MyWorld extends World{
     
     public void prepare(){
         Character character = new Character();
-        addObject(character,400,200);
+        addObject(character,400,100);
     }
     
     private void treeSpawn(){

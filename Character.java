@@ -3,12 +3,24 @@ import greenfoot.*;
 public class Character extends Actor{
     private int velocity;
     private boolean stillAlive;
-
+    private static GreenfootSound deathAudio;
+    private String characterDirection;
+    
     public Character(){
-        velocity = 8;
+        velocity = 6;
+        deathAudio = new GreenfootSound("deathGTA.wav");
         initialize();
+        characterDirection = "right";
+        setImage("Character right.png");
     }
 
+    public void act(){
+        if (stillAlive) {
+            characterMovement();
+            getItem();
+        }
+    }
+    
     public void initialize(){
         stillAlive = true;
     }
@@ -17,16 +29,35 @@ public class Character extends Actor{
         return stillAlive;
     }
     
-    public void moveRight(){
-        if(stillAlive){
-            setLocation(getX() + velocity, getY());
-            setImage("Character right.png");
+    public static void stopAudio(){
+        deathAudio.stop();
+    }
+    
+    private void characterMovement(){
+        if(Greenfoot.isKeyDown("left")){
+            moveLeft();
+        } else if(Greenfoot.isKeyDown("right")){
+            moveRight();
         }
     }
-    public void moveLeft(){
+    
+    private void moveRight(){
+        if(stillAlive){
+            setLocation(getX() + velocity, getY());
+            if (!characterDirection.equals("right")){
+                setImage("Character right.png");
+                characterDirection = "right";
+            }
+        }
+    }
+    
+    private void moveLeft(){
         if(stillAlive){
             setLocation(getX() - velocity, getY());
-            setImage("Character left.png");
+            if (!characterDirection.equals("left")){
+                setImage("Character left.png");
+                characterDirection = "left";
+            }
         }
     }
     
@@ -37,13 +68,12 @@ public class Character extends Actor{
         }
     }
     
-    public void act(){
-        if(Greenfoot.isKeyDown("left")){
-            moveLeft();
+    public void die(){
+        if (stillAlive){
+            stillAlive = false;
+            //troca a imagem, acho que não temos
+            deathAudio.play();
+            ((MyWorld)getWorld()).endGame();
         }
-        if(Greenfoot.isKeyDown("right")){
-            moveRight();
-        }
-        getItem();
     }
 }

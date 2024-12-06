@@ -1,32 +1,35 @@
 import greenfoot.*;
 
-public class Rock extends Actor
-{
-    public Rock(){
+public class Rock extends Actor {
+    private static int velocity;
+
+    public Rock() {
+        velocity = 8;
+    }
+    
+    public void act() {
+        MyWorld world = (MyWorld) getWorld();
         
-    }
-    
-    public void act(){
-        moveUp();
-        playerHitRock();
-        outOfScreen();
-    }
-    
-    private void moveUp(){
-        setLocation(getX(), getY() - 8);
-    }
-    
-    private void playerHitRock(){
-        Actor character = getOneIntersectingObject(Character.class);
-        if (character != null){
-            //tocar trilha sonora
-            //parar o jogo
-            //dar opção de recomeçar
+        if (world.gameStillRunning()) {
+            moveUp();
+            playerHitRock();
+            outOfScreen();
         }
     }
     
-    private void outOfScreen(){
-        if (getY() < 10){
+    private void moveUp() {
+        setLocation(getX(), getY() - velocity);
+    }
+    
+    private void playerHitRock() {
+        Actor character = getOneIntersectingObject(Character.class);
+        if (character != null) {
+            ((Character) character).die();
+        }
+    }
+    
+    private void outOfScreen() {
+        if (getY() < 10) {
             getWorld().removeObject(this);
         }
     }

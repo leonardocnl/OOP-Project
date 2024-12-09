@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Manager
+comment0.text=Essa\ classe\ serve\ para\ gerenciar\ os\ atores\ que\ s\u00E3o\ gerados\ durante\ a\ execu\u00E7\u00E3o\ do\ game.\ [Tree,\ Rock\ e\ Item]
+comment1.params=world
+comment1.target=Manager(MyWorld)
+comment2.params=
+comment2.target=void\ initialize()
+comment3.params=
+comment3.target=void\ spawnItems()
+comment4.params=
+comment4.target=void\ spawnVillains()
+comment5.params=
+comment5.target=void\ itemSpawn()
+comment6.params=
+comment6.target=void\ treeSpawn()
+comment7.params=
+comment7.target=void\ rockSpawn()
+numComments=8

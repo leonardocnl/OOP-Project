@@ -10,7 +10,7 @@ public class Character extends Actor{
     public Character(){
         velocity = 6;
         deathAudio = new GreenfootSound("deathGTA.wav");
-        deathAudio.setVolume(10);
+        deathAudio.setVolume(50);
         initialize();
         characterDirection = "right";
         setImage("Character right.png");
@@ -67,19 +67,12 @@ public class Character extends Actor{
         }
     }
     
-    public void getItem(){
-        Actor strawberry = getOneIntersectingObject(Item.class);
-        if(strawberry != null){
-            getWorld().removeObject(strawberry);
-        }
-    }
-    
     /**Verifica colisão com intens e altera o placar*/
     private void checkItemColision(){
         Item item = (Item) getOneIntersectingObject(Item.class);
-        if (item != null){
+        if(item != null){
             getWorld().removeObject(item);
-            ((MyWorld) getWorld()).getScore().playerGotItem();
+            ((MyWorld)getWorld()).addPoints(50);
         }
     }
     

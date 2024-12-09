@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Villains
+comment1.params=velocity
+comment1.target=Villains(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moveUp()
+comment4.params=
+comment4.target=void\ checkCollision()
+comment5.params=
+comment5.target=void\ getOutOfScreen()
+numComments=6

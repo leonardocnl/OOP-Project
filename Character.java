@@ -9,6 +9,7 @@ public class Character extends Actor{
     public Character(){
         velocity = 6;
         deathAudio = new GreenfootSound("deathGTA.wav");
+        deathAudio.setVolume(10);
         initialize();
         characterDirection = "right";
         setImage("Character right.png");
@@ -61,9 +62,9 @@ public class Character extends Actor{
         }
     }
     
-    private void getItem(){
+    public void getItem(){
         Actor strawberry = getOneIntersectingObject(Item.class);
-        if (strawberry != null){
+        if(strawberry != null){
             getWorld().removeObject(strawberry);
         }
     }

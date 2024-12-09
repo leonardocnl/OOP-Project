@@ -1,5 +1,11 @@
 #BlueJ class context
 comment0.target=Item
 comment1.params=
-comment1.target=void\ act()
-numComments=2
+comment1.target=Item()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moveUp()
+comment4.params=
+comment4.target=void\ outOfScreen()
+numComments=5

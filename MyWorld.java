@@ -7,7 +7,11 @@ public class MyWorld extends World{
     private int rockSpawnTimer;
     private int rockVelocity;
     private int rockSpawnVelocity;
+    private int itemSpawnTimer;
+    private int itemVelocity;
+    private int itemSpawnVelocity;
     private int randomX;
+    private Score score;
     private boolean gameStillRunning;
     
     public MyWorld(){    
@@ -19,6 +23,7 @@ public class MyWorld extends World{
         if (gameStillRunning()){
             treeSpawn();
             rockSpawn();
+            itemSpawn();
         } else {
             restartCheck();
         }
@@ -26,16 +31,21 @@ public class MyWorld extends World{
     
     private void initialize(){
         treeSpawnTimer = 0;
-        treeVelocity = 8;
-        rockSpawnTimer = 0;
-        rockVelocity = 8;
+        treeVelocity = 6;
         treeSpawnVelocity = 25;
+        rockSpawnTimer = 0;
+        rockVelocity = 6;
         rockSpawnVelocity = 25;
+        itemSpawnTimer = 0;
+        itemVelocity = 0;
+        itemSpawnVelocity = 125;
         gameStillRunning = true;
         prepare();
     }
     
     public void prepare(){
+        score = new Score();
+        addObject(score,40,20);
         Character character = new Character();
         addObject(character,400,100);
     }
@@ -57,6 +67,16 @@ public class MyWorld extends World{
             Rock rock = new Rock();
             addObject(rock, randomX, getHeight() - rockVelocity);
             rockSpawnTimer = 0;
+        }
+    }
+    
+    private void itemSpawn(){
+        itemSpawnTimer += 1;
+        if (itemSpawnTimer >= itemSpawnVelocity){
+            randomX = Greenfoot.getRandomNumber(getWidth());
+            Item strawberry = new Item();
+            addObject(strawberry, randomX, getHeight() - itemVelocity);
+            itemSpawnTimer = 0;
         }
     }
     

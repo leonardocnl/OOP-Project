@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Score
+comment1.params=
+comment1.target=Score()
+comment2.params=
+comment2.target=void\ initialize()
+comment3.params=
+comment3.target=void\ playerGotItem()
+comment4.params=
+comment4.target=void\ resetImage()
+numComments=5

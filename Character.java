@@ -1,11 +1,12 @@
 import greenfoot.*;
 
 public class Character extends Actor{
-    private int velocity;
-    private boolean stillAlive;
-    private static GreenfootSound deathAudio;
-    private String characterDirection;
+    private int velocity; //velocidade de movimento do personagem
+    private boolean stillAlive; //indica se o personagem está vivo
+    private static GreenfootSound deathAudio; //som tocado quando o personagem morre
+    private String characterDirection; //direção atual do personagem "left" ou "right"
     
+    /**garante que os atributos vão ser inicializados corretamente*/
     public Character(){
         velocity = 6;
         deathAudio = new GreenfootSound("deathGTA.wav");
@@ -15,10 +16,11 @@ public class Character extends Actor{
         setImage("Character right.png");
     }
 
+    /**verifica se o personagem está vivo. Permite a movimentação e interação com outros atores*/
     public void act(){
-        if (stillAlive) {
+        if (stillAlive && ((MyWorld)getWorld()).gameStillRunning()){
             characterMovement();
-            getItem();
+            checkItemColision();
         }
     }
     
@@ -34,6 +36,7 @@ public class Character extends Actor{
         deathAudio.stop();
     }
     
+    /**controla o movimento do personagem*/
     private void characterMovement(){
         if(Greenfoot.isKeyDown("left")){
             moveLeft();
@@ -42,6 +45,7 @@ public class Character extends Actor{
         }
     }
     
+    /**move o personagem para a direita*/
     private void moveRight(){
         if(stillAlive){
             setLocation(getX() + velocity, getY());
@@ -52,6 +56,7 @@ public class Character extends Actor{
         }
     }
     
+    /**move o personagem para a esquerda*/
     private void moveLeft(){
         if(stillAlive){
             setLocation(getX() - velocity, getY());
@@ -69,6 +74,16 @@ public class Character extends Actor{
         }
     }
     
+    /**Verifica colisão com intens e altera o placar*/
+    private void checkItemColision(){
+        Item item = (Item) getOneIntersectingObject(Item.class);
+        if (item != null){
+            getWorld().removeObject(item);
+            ((MyWorld) getWorld()).getScore().playerGotItem();
+        }
+    }
+    
+    /**mata o personagem*/
     public void die(){
         if (stillAlive){
             stillAlive = false;

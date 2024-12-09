@@ -3,7 +3,7 @@ import greenfoot.*;
 public class Tree extends Actor{
     private static int velocity;
     public Tree(){
-        velocity = 8;
+        velocity = 6;
     }
     
     public void act(){

@@ -4,6 +4,7 @@ comment1.params=
 comment1.target=Item()
 comment2.params=
 comment2.target=void\ act()
+comment2.text=move\ o\ item\ e\ verifica\ se\ ele\ j\u00E1\ saiu\ da\ tela
 comment3.params=
 comment3.target=void\ moveUp()
 comment4.params=

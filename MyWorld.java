@@ -20,10 +20,15 @@ public class MyWorld extends World{
     }
     
     public void act(){
+
         if (gameStillRunning()){
-            treeSpawn();
-            rockSpawn();
-            itemSpawn();
+            if (score.wonTheGame()){
+                win();
+            } else {
+                treeSpawn();
+                rockSpawn();
+                itemSpawn();
+            }
         } else {
             restartCheck();
         }
@@ -32,10 +37,10 @@ public class MyWorld extends World{
     private void initialize(){
         treeSpawnTimer = 0;
         treeVelocity = 6;
-        treeSpawnVelocity = 25;
+        treeSpawnVelocity = 30;
         rockSpawnTimer = 0;
         rockVelocity = 6;
-        rockSpawnVelocity = 25;
+        rockSpawnVelocity = 30;
         itemSpawnTimer = 0;
         itemVelocity = 0;
         itemSpawnVelocity = 125;
@@ -82,6 +87,15 @@ public class MyWorld extends World{
     
     public boolean gameStillRunning(){
         return gameStillRunning;
+    }
+    
+    public Score getScore(){
+        return score;
+    }
+    
+    public void win(){
+        gameStillRunning = false;
+        showText("Parabéns, você venceu! Pressione 'R' para reiniciar o jogo", 400,300);
     }
     
     public void endGame(){

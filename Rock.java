@@ -4,7 +4,7 @@ public class Rock extends Actor {
     private static int velocity;
 
     public Rock() {
-        velocity = 8;
+        velocity = 6;
     }
     
     public void act() {
